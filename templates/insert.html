@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+{% block title%}
+Insert Tast
+{% endblock %}
+
+{% block content %}
+
+
+<table border="0" style="box-shadow:1px 1px 10px white" width="70%" height="70%" align="center" background="static/image/bgg.jpg">
+<tr>
+
+<td style="background-position:center center" align="center">
+
+ <div class="login-dark">
+	 <label style="color:white">{{ msg }}</label>
+        <form action="{{ url_for('insert') }}" 	method="post">
+            <h2 class="sr-only" style="color:#6666ff">Project Registration</h2>
+            <div class="illustration"><i class="icon ion-ios-locked-outline"></i></div>
+			
+            <div class="form-group" style="padding:10px">
+			<input class="form-control" style="padding:5px" type="text" name="title" placeholder="Task's Title" required>
+			</div>
+			
+            <div class="form-group" style="padding:10px">
+			<input class="form-control" style="padding:5px" type="number" name="amount" min="100000" max="1000000" placeholder="Amount (100000 - 1000000 Euros)" required>
+			</div>
+			
+			<div class="form-group" style="padding:10px">
+			<label for="date_of_charge">Select start date</label>
+			<input type="date" name="start_date" value="2022-06-06" min="2022-06-06" max="2026-06-06">
+			</div>
+			
+			<div class="form-group" style="padding:10px">
+			<label for="date_of_charge">Select end date</label>
+			<input type="date" name="end_date" value="2022-06-06" min="2022-06-06" max="2026-06-06">
+			</div>
+			
+			<div class="form-group" style="padding:10px">
+			<textarea style="width:500px;margin-left:5px" placeholder="Abstract (max 150 characters)" rows="5" name="abstract" required></textarea>
+			</div>	
+			
+			<div class="form-group">
+				<label class="h6 fw-bolder" for="exampleFormControlSelect2">Select Organization</label>
+					<select multiple class="form-control" size="5" id="exampleFormControlSelect2" name='form_org_id'>
+						{% for organization in organizations %}
+						<option>{{organization}}</option>
+						{% endfor %}
+				</select>
+            </div>
+			
+			<div class="form-group">
+				<label class="h6 fw-bolder" for="exampleFormControlSelect2">Select Executive</label>
+					<select multiple class="form-control" size="5" id="exampleFormControlSelect2" name='form_exe_id'>
+						{% for executive in executives %}
+						<option>{{executive}}</option>
+						{% endfor %}
+				</select>
+            </div>
+			
+			<div class="form-group">
+				<label class="h6 fw-bolder" for="exampleFormControlSelect2">Select Research Director (Must be from the selected organization) </label>
+					<select multiple class="form-control" size="5" id="exampleFormControlSelect2" name='form_res_id'>
+						{% for researcher in researchers %}
+						<option>{{researcher}}</option>
+						{% endfor %}
+				</select>
+            </div>
+			
+			<div class="form-group">
+				<label class="h6 fw-bolder" for="exampleFormControlSelect2">Select Program</label>
+					<select multiple class="form-control" size="5" id="exampleFormControlSelect2" name='form_prog_id'>
+						{% for program in programs %}
+						<option>{{program}}</option>
+						{% endfor %}
+				</select>
+            </div>
+			
+			<div class="form-group">
+				<label class="h6 fw-bolder" for="exampleFormControlSelect2">Select Evaluator (Must not be from the selected organization)</label>
+					<select multiple class="form-control" size="5" id="exampleFormControlSelect2" name='form_eval_id'>
+						{% for researcher in researchers %}
+						<option>{{researcher}}</option>
+						{% endfor %}
+				</select>
+            </div>			
+			
+			<div class="form-group" style="padding:10px">
+			<input class="form-control" style="padding:5px" type="number" name="grade" min="0" max="100" placeholder="Grade (0-100)" required>
+			</div>
+			
+			<div class="form-group">
+				<label class="h6 fw-bolder" for="exampleFormControlSelect2">Select science</label>
+					<select multiple class="form-control" size="5" id="exampleFormControlSelect2" name='form_sc_id'>
+						{% for science in sciences %}
+						<option>{{science}}</option>
+						{% endfor %}
+				</select>
+            </div>			
+            <div class="form-group" style="padding:10px">
+			<button class="btn btn-primary"  type="submit">Submit</button></div>
+			</form>
+    </div>
+</td>
+	<td align="center"  width="60%">
+
+</td>
+</tr>
+<tr style="background-color:black;color:white;height:25px">
+</tr>
+</table>
+{% endblock%}

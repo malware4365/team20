@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% block title%}
+(Question 7)
+{% endblock %}
+
+{% block content %}
+<div class="jumbotron">
+    <div class="container px-5">
+        <h2 class="display-6">Executives (top 5)</h2>
+        <p>Click checkbox "Submit" to find the top-5 executives who work for ΕΛ.ΙΔ.EK. and have given </p>
+		<p></br>the largest amount of funding to a company. (Question 7)</p>
+    </div>
+</div>
+
+<section class="py-5 border-bottom">
+    <div class="container px-5 my-5">
+        <div class="row gx-5">
+            <div class="col-lg-4 mb-5 mb-lg-0">
+					<form method="POST" action="" class="form-inline" id='button_form'>
+						<div class="form-check">
+							<input class="form-check-input" id="toggle" type="checkbox" name="form_button" id="Checkbox1" value="Check" onclick="this.form.submit()">
+							<label class="form-check-label" for="Checkbox1">
+                            Submit
+                        </label>
+						</div>    
+					</form>		
+			</div>
+            <div class="col">
+                {%if data|length > 0%}
+					{% set vis = ""%}
+                {% else %}
+					{% set vis = "hidden"%}
+					{%if headings|length > 0%}
+					<div class="alert alert-danger" role="alert">
+						No entries found!
+					</div>
+					{% endif %}
+                {% endif %}
+                <div class="container">
+                    <table class="table table-sm table-striped table-bordered" id='executives_table'>
+                        <thead class='table-dark'>
+                            <tr>
+                                {% for header in headings %}
+                                <th>{{ header }}</th>
+                                {% endfor %}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for row in data %}
+                            <tr>
+                                {% for cell in row %}
+                                <td> {{ cell }} </td>
+                                {% endfor %}
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+{% endblock %}

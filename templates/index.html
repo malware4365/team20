@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block title%}
+Home DB team20
+{% endblock %}
+
+{% block content %}
+
+<!-- Main jumbotron for a primary marketing message or call to action -->
+
+<div class="jumbotron">
+    <div class="container">
+        <h2 class="display-6">Welcome to ΕΛ.ΙΔ.ΕΚ Database!</h2>
+		<p>This is the DB project of team20</p>
+        <p>Romanos Emmanouil-Athanasios (el16303)</p>
+		<p>Zerzelidis Nikolaos (el17507)</p>
+		<p>Tsesmelis Konstantinos (el14672)</p>
+        <p>Hope you enjoy.</p>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <h2>Scientific field</h2>
+                <p>Use this tool to find the tasks and researcher that work on each scientific field
+                </p>
+                <p><a class="btn btn-secondary" href="{{ url_for('science')}}" role="button">View more »</a></p>
+            </div>
+			<div class="col-md-4">
+                <h2>Young Researchers</h2>
+                <p>Use this tool to find the researchers under 40 years old working on the most active projects
+                </p>
+                <p><a class="btn btn-secondary" href="{{ url_for('young_researchers')}}" role="button">View more »</a></p>
+            </div>
+			<div class="col-md-4">
+                <h2>Insert data</h2>
+                <p>Use this tool to insert a new task.
+                </p>
+                <p><a class="btn btn-secondary" href="{{ url_for('insert')}}" role="button">Proceed »</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img class="d-block w-10" src="https://rawmathub.gr/images/2022/03/23/ELIDEK_large.webp" alt="First slide">
+        </div>
+    </div>
+
+
+{% endblock%}

@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% block title%}
+(Question 2)
+{% endblock %}
+
+{% block content %}
+<div class="jumbotron">
+    <div class="container px-5">
+        <h2 class="display-6">Views</h2>
+        <p>Click on the radio buttons below to see the two different views.(Question 2)</p>
+    </div>
+</div>
+
+
+<section class="py-5 border-bottom">
+    <div class="container px-5 my-5">
+
+        <div class="row gx-5">
+            <div class="col-lg-4 mb-5 mb-lg-0">
+
+                <form method="POST" action="" class="form-inline" id='view_form'>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="form_view" id="Radios1" value="tasks" onclick="this.form.submit()">
+                        <label class="form-check-label" for="Radios1">
+                            Tasks of every researcher
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="form_view" id="Radios2" value="programs" onclick="this.form.submit()">
+                        <label class="form-check-label" for="Radios2">
+                            Tasks of each program
+                        </label>
+                    </div>
+                </form>
+            </div>
+
+            <div class="col">
+                {%if data|length > 0%}
+                    <label class="h6 fw-bolder px-3" for="views_table">
+                    </label>
+                {% else %}
+                    <label class="px-4" for="views_table"></label>
+                {% endif %}
+                <div class="container">
+                    <table class="table table-sm table-striped table-bordered" id='views_table'>
+                        <thead class='table-dark'>
+                            <tr>
+                                {% for header in headings %}
+                                <th>{{ header }}</th>
+                                {% endfor %}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for row in data %}
+                            <tr>
+                                {% for cell in row %}
+                                <td> {{ cell }} </td>
+                                {% endfor %}
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+{% endblock%}

@@ -1,0 +1,136 @@
+{% extends 'base.html' %}
+{% block title%}
+(Question 1)
+{% endblock %}
+
+{% block content %}
+<div class="jumbotron">
+    <div class="container px-5">
+        <h2 class="display-6">Criteria</h2>
+        <p>Choose a program to find the "active" tasks and the researchers that work on it. (Question 1)</p>
+    </div>
+</div>
+
+<section class="py-5 border-bottom">
+    <div class="container px-5 my-5">
+		<div class="row gx-5">
+            <h3 class="h6 fw-bolder">Check one box at a time to make a combination search between Program and Deadline Date, Duration of Task or Executive of the Task.
+                <p></br>(If more that one box is selected, then appeares the task titles of the selected program.)</p>
+            </h3>
+        </div>
+		</br>
+		<form method="POST" action="" id="criteria_form">
+			<div class="row gx-5">
+				<div class="col-lg-4 mb-5 mb-lg-0">
+					<div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-collection"></i></div>
+					<h2 class="h4 fw-bolder">Select program</h2>
+					<div class="form-prog">
+						<select multiple class="form-control" size="9" id="exampleFormControlSelect2" name='form_prog_id'>
+							{% for program in programs %}
+							<option>{{program}}</option>
+							{% endfor %}
+						</select>
+					</div>
+				</div>
+			</div>
+		
+			<div class="col-lg-4 mb-5 mb-lg-0 border-left">
+                    <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-building"></i></div>
+                    <div class="form-prog form-check">
+                        <input type="checkbox" class="form-check-date" id="Check1" name="form_date_include">
+                        <label class="form-check-label h4 fw-bolder checkbox-inline" for="Check1">Deadline Date</label>
+                    </div>
+                    <p>Researchers that work on tasks that will be active till the selected deadline date</p>
+                    <label for="date_of_charge">Select date</label>
+                    <input type="date" name='form_date_of_deadline' value="2022-06-06" min="2022-06-01" max="2026-06-01">
+            </div>
+			
+			<div class="col-lg-4 mb-5 mb-lg-0 border-left">
+                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-collection"></i></div>
+					<div class="form-prog form-check">
+                        <input type="checkbox" class="form-check-duration" id="Check2" name="form_duration_include">
+                        <label class="form-check-label h4 fw-bolder checkbox-inline" for="Check2">Duration of Task</label>
+                    </div>
+                    <p>Select duration (1-4 years)</p>
+                    <div class="form-duration">
+						<select multiple class="form-control" id="exampleFormControlSelect2" name='form_duration_value'>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+						</select>
+                    </div>
+            </div>
+			
+			<div class="col-lg-4 mb-5 mb-lg-0 border-left">
+                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-collection"></i></div>
+					<div class="form-prog form-check">
+                        <input type="checkbox" class="form-check-executive" id="Check3" name="form_executive_include">
+                        <label class="form-check-label h4 fw-bolder checkbox-inline" for="Check3">Executive of the task</label>
+                    </div>
+                    <p>Select the executive you want)</p>
+                    <div class="form-exec">
+						<select multiple class="form-control" size="9" id="exampleFormControlSelect2" name='form_exec_id'>
+                            {% for executive in executives %}
+							<option>{{executive}}</option>
+							{% endfor %}
+						</select>
+                    </div>
+            </div
+
+			<div class="row gx-5">
+                <div class="container">
+                    <div class="col text-center">
+                        </br></br>
+                        <button type="submit" class="btn btn-primary " form="criteria_form" value="Submit">Submit</button>
+                    </div>
+                </div>
+            </div>
+		</form>	
+    </div>
+</section>
+
+
+
+
+
+
+
+
+<section class="py-5 border-bottom">
+    <div class="container">
+        {%if data|length > 0%}
+            {% set vis = ""%}
+        {% else %}
+            {% set vis = "hidden"%}
+            {%if headings|length > 0%}
+            <div class="alert alert-danger" role="alert">
+                No entries found!
+            </div>
+            {% endif %}
+        {% endif %}
+
+        <table class="table table-sm table-striped table-bordered" style="visibility: {{vis}}">
+            <thead class='table-dark'>
+                <tr>
+                    {% for header in headings %}
+                    <th>{{ header }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in data %}
+                <tr>
+                    {% for cell in row %}
+                    <td> {{ cell }} </td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</section>
+
+
+
+{% endblock %}

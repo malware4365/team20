@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <title>
+        {% block title%}
+        {% endblock %}
+    </title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+        <a class="navbar-brand" href="{{ url_for('index')}}"><span class="h3">ΕΛΙΔΕΚ</span></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active px-3">
+                    <a class="nav-link" href="{{ url_for('index')}}"><span class="h3">Home</span></a>
+                </li>
+				<li class="nav-item active px-3">
+                    <a class="nav-link" href="{{ url_for('criteria')}}"><span class="h3">Criteria</a>
+                </li>
+				<li class="nav-item active px-3">
+                    <a class="nav-link" href="{{ url_for('views')}}"><span class="h3">Views</a>
+                </li>
+                <li class="nav-item active px-3">
+                    <a class="nav-link" href="{{ url_for('science')}}"><span class="h3">Science</a>
+                </li>
+				<li class="nav-item active px-3">
+                    <a class="nav-link" href="{{ url_for('organizations')}}"><span class="h3">Organizations</a>
+                </li>
+				<li class="nav-item active px-3">
+                    <a class="nav-link" href="{{ url_for('top3')}}"><span class="h3">Science Pairs</a>
+                </li>
+				<li class="nav-item active px-3">
+                    <a class="nav-link" href="{{ url_for('young_researchers')}}"><span class="h3">Young Researchers</a>
+                </li>
+				<li class="nav-item active px-3">
+                    <a class="nav-link" href="{{ url_for('executives')}}"><span class="h3">Executives</a>
+                </li>
+				<li class="nav-item active px-3">
+                    <a class="nav-link" href="{{ url_for('no_deliverables')}}"><span class="h3">No Deliverables</a>
+                </li>			               
+            </ul>
+        </div>
+    </nav>
+
+
+    {% block content %}
+
+    {% endblock%}
+</body>
+
+</html>

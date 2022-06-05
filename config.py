@@ -1,0 +1,4 @@
+import os
+import itertools 
+class Config(object):
+    SECRET_KEY = os.environ.get('SECRET_KEY') or '123456'
